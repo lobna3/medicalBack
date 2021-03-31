@@ -1,0 +1,24 @@
+<?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Doctor extends Model
+{
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+       
+    'id','shortBiography','state','status','codePostal','country','city',
+    ];
+
+      public function specialites(){
+        return $this->belongsToMany(specialite::class ,'doctor_specialites');
+    }
+
+}
+
