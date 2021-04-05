@@ -8,8 +8,13 @@ class DocumentController extends Controller
 {
     //
    public function upload(request $request){
+    if($request->hasfile('file')){
       $path = $request->file('file')->store('shared');
       return ['path' =>$path];
+
+    }else{
+      return ['tt'=>'rr'];
+    }
 
     }
 
@@ -27,9 +32,18 @@ class DocumentController extends Controller
         return $s;
     }
 
-     public function getAll(){
+     public function getAll($id){
+        
+       return Document::where('doctor_id',$id)->with('doctor')->with('patient.user')->with('sector')->get();
 
-       return Document::all();
+    }
+      public function getAllPatient($id){
+        if($id != 0){
+           return Document::where('patient_id',$id)->with('doctor')->with('patient')->with('sector')->get();
+         }else{
+           return Document::where('patient_id',NULL)->with('doctor')->with('patient')->with('sector')->get();;
+         }
+      
 
     }
 

@@ -15,4 +15,8 @@ class Patient extends Model
     protected $fillable = [
         'id','n_cnss'
     ];
+
+      public function user(){
+        return $this->belongsTo(User::class ,'id' ,'id' );
+    }
 }

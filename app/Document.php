@@ -13,9 +13,17 @@ class Document extends Model
      * @var array
      */
     protected $fillable = [
-       'id', 'designation','date','sector_id','patient_id','doctor_id','file'
+       'id', 'designation','date','sector_id','patient_id','doctor_id','file','type','size'
     ];
 
 
-    
+    public function doctor(){
+        return $this->belongsTo(Doctor::class );
+    }
+    public function patient(){
+        return $this->belongsTo(Patient::class );
+    }
+    public function sector(){
+        return $this->belongsTo(Sector::class );
+    }
 }

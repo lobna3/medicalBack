@@ -93,8 +93,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 //Documents
   Route::post('/uploadDocument','DocumentController@upload');
-  Route::get('/documents','DocumentController@getAll');
+  Route::get('/documents/{id}','DocumentController@getAll');
+    Route::get('/documentsP/{id}','DocumentController@getAllPatient');
   Route::delete('/documents/{id}','DocumentController@delete');
   Route::post('/add-document','DocumentController@create');
   Route::put('/edit-document','DocumentController@update');
-  Route::get('/documents/{id}','DocumentController@getById');  
+  Route::get('/document/{id}','DocumentController@getById');  
