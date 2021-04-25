@@ -26,8 +26,18 @@ class AppointmentController extends Controller
 
     }
      public function getAllByDoctorId($id){
-  
-       return Appointment::where('doctor_id',$id)->with('doctor.user')->with('doctor.specialites')->get();
+        
+       return Appointment::where('doctor_id',$id)->with('doctor.user')->with('doctor.specialites')->get()
+
+       ;
+
+    }
+
+     public function getAllByPatientId($id){
+        
+       return Appointment::where('patient_id',$id)->with('user')->get()
+
+       ;
 
     }
 
