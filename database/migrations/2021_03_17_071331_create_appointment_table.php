@@ -17,12 +17,13 @@ class CreateAppointmentTable extends Migration
             $table->bigIncrements('id');
             $table->String('appointment_date');
             $table->String('appointment_time');
+            $table->String('phone');
+            $table->String('note');
             $table->Integer('patient_id');
             $table->foreign('patient_id')->references('id')->on('patients');
             $table->Integer('doctor_id');
             $table->foreign('doctor_id')->references('id')->on('doctors');
-            $table->Integer('sector_id');
-            $table->foreign('sector_id')->references('id')->on('sectors');
+            
             $table->timestamps();
 
         });

@@ -13,14 +13,14 @@ class Appointment extends Model
      * @var array
      */
     protected $fillable = [
-       'id', 'appointment_date','appointment_time','patient_id','doctor_id','sector_id'
+       'id','phone' ,'note','appointment_date','appointment_time','patient_id','doctor_id'
     ];
 
-    public function users(){
-        return $this->belongsToMany(user::class ,'users');
+    public function doctor(){
+        return $this->belongsTo(doctor::class );
     }
 
-    public function sectors(){
-        return $this->belongsToMany(sector::class ,'sectors');
+    public function patient(){
+        return $this->belongsTo(user::class ,'patient_id');
     }
 }

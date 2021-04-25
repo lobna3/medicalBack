@@ -91,6 +91,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
   Route::put('/edit-appointment','AppointmentController@update');
   Route::get('/appointments/{id}','AppointmentController@getById');  
 
+Route::get('/appointmentsd/{id}','AppointmentController@getAllByDoctorId');
 //Documents
   Route::post('/uploadDocument','DocumentController@upload');
   Route::get('/documents/{id}','DocumentController@getAll');
