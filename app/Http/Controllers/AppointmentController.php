@@ -35,7 +35,7 @@ class AppointmentController extends Controller
 
      public function getAllByPatientId($id){
         
-       return Appointment::where('patient_id',$id)->with('user')->get()
+       return Appointment::where('patient_id',$id)->with('patient.user')->get()
 
        ;
 
