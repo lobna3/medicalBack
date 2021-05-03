@@ -160,7 +160,7 @@ class UserController extends Controller
 
         return Patient::create([
           'id'=>$user->id,
-          'n_cnss'=>"test",
+          'n_cnss'=>$request->input('n_cnss'),
         ]);
       }
 
