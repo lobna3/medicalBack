@@ -22,6 +22,8 @@ class CreateDoctorsTable extends Migration
             $table->string('status')->nullable();
             $table->string('state')->nullable();
             $table->string('shortBiography');
+            $table->Integer('secretary_id');
+            $table->foreign('secretary_id')->references('id')->on('users');
             $table->primary('id');
             $table->foreign('id')->references('id')->on('users');
 

@@ -13,7 +13,7 @@ class Doctor extends Model
      */
     protected $fillable = [
        
-    'id','shortBiography','state','status','codePostal','country','city',
+    'id','shortBiography','state','status','codePostal','country','city','secretary_id',
     ];
 
       public function specialites(){
