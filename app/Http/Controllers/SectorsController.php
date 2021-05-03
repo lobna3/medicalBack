@@ -23,7 +23,7 @@ class SectorsController extends Controller
     }
 
    public function updateS(Request $request){
-        $s= Sector::find($request->input('id'));
+         $s= Sector::find($request->input('id'));
         $s->update($request->all());
         return $s;
     }
