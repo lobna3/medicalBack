@@ -179,7 +179,9 @@ class UserController extends Controller
     }
 
      public function getByIdP($id){
+       User::where('role','patient')->get();
        return User::find($id);
+ 
  
     }
 
