@@ -47,6 +47,6 @@ class User extends Authenticatable
         return $this->hasOne(User::class ,'id' , 'id');
     }
      public function sector(){
-        return $this->hasOne(Sector::class ,'user_id' , 'id');
+        return $this->ManyToOne(Sector::class ,'user_id' , 'id');
     }
 }

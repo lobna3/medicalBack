@@ -17,6 +17,6 @@ class Sector extends Model
     ];
 
      public function users(){
-        return $this->ManyToOne(user::class ,'user_id');
+        return $this->belongsTo(user::class ,'user_id');
     }
 }
