@@ -85,7 +85,7 @@ class UserController extends Controller
          'codePostal'=> $request->input('codePostal'),
          'country'=> $request->input('country'),
          'city'=> $request->input('city'),
-         
+         'secretary_id'=> $request->input('secretary_id'),
           
         ]);
 
