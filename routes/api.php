@@ -67,7 +67,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
   Route::post('/add-patient','UserController@createP');
   Route::put('/edit-patient','UserController@updateP');
   Route::get('/patients-list/{id}','UserController@getByIdP');  
-
+Route::get('/patients-doctor-list/{id_d}','UserController@getDoctorAllP');
 
   // Sectors
    Route::post('/add-sector','SectorsController@createS');

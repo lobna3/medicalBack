@@ -44,7 +44,7 @@ class User extends Authenticatable
         return $this->hasOne(Doctor::class ,'id' , 'id');
     }
  public function patient(){
-        return $this->hasOne(User::class ,'id' , 'id');
+        return $this->hasOne(Patient::class ,'id' , 'id');
     }
      public function sector(){
         return $this->ManyToOne(Sector::class ,'user_id' , 'id');

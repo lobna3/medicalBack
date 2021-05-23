@@ -8,6 +8,7 @@ use App\Patient;
 use App\Doctor;
 use App\Sector;
 use App\DoctorSpecialite;
+use App\Appointment;
 use Illuminate\Support\Facades\Hash;
 class UserController extends Controller
 {
@@ -33,14 +34,14 @@ class UserController extends Controller
 
         return Patient::create([
           'id'=>$user->id,
-          'n_cnss'=>$request->input('n_cnss'),
+          'n_cnss'=>$request->input('n_cnss') ? $request->input('n_cnss') : ' ' ,
         ]);
     	}
     	
     }
 
      public function login(Request $request){
-    	$user=User::where('email',$request->input('email'))->first();
+    	$user=User::where('email',$request->input('email'))->with('doctor')->with('patient')->first();
     	if(!empty($user)){
            if(Hash::check($request->input('password') , $user->password)){
            return $user;
@@ -112,8 +113,20 @@ class UserController extends Controller
 
    public function update(Request $request){
         $s= User::find($request->input('id'));
-        $s->update($request->all());
-        return $s;
+        $s->firstname = $request->input('firstname') ; 
+        $s->firstname = $request->input('firstname') ;
+        $s->firstname = $request->input('firstname') ;
+        $s->firstname = $request->input('firstname') ;
+        $s->save();
+
+        $d=Doctor::find($request->input('id'));
+        $d->state = $request->input('doctor')['state'];
+        $d->state = $request->input('doctor')['state'];
+        $d->state = $request->input('doctor')['state'];
+        $d->state = $request->input('doctor')['state'];
+        $d->save();
+        $data = User::where('id' , $request->input('id'))->with('doctor')->first();
+        return $data;
     }
 
      public function getAll(){
@@ -175,6 +188,14 @@ class UserController extends Controller
      public function getAllP(){
 
        return User::where('role','patient')->get();
+
+    }
+
+    public function getDoctorAllP($id_d){
+
+$patients = Appointment::where('doctor_id' , $id_d)->select('patient_id')->get();
+
+       return User::whereIn('id',$patients)->get();
 
     }
 
