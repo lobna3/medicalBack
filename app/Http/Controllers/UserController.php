@@ -121,13 +121,15 @@ class UserController extends Controller
         $s->save();
 
         $d=Doctor::find($request->input('id'));
-        $d->state = $request->input('doctor')['state'];
+        $d->state  = $request->input('doctor')['state '];
         $d->country = $request->input('doctor')['country'];
         $d->city = $request->input('doctor')['city'];
         $d->codePostal = $request->input('doctor')['codePostal'];
         $d->save();
         $data = User::where('id' , $request->input('id'))->with('doctor')->first();
         return $data;
+
+
     }
 
      public function getAll(){
