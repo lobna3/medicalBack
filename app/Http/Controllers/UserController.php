@@ -16,7 +16,7 @@ class UserController extends Controller
     public function register(Request $request){
     	$user=User::where('email',$request->input('email'))->first();
     	if(!empty($user)){
-           return  response()->json(["msg"=>"vous avez déja un compte"] ,403);
+           return  response()->json(["msg"=>"Already have an account"] ,403);
     	}
     	else {
     		$user= User::create([
@@ -47,7 +47,7 @@ class UserController extends Controller
            return $user;
            }
            else{
-                return response()->json(["msg"=>"Mot de passe invalid"] ,403);
+                return response()->json(["msg"=>"Password invalid"] ,403);
            }
     	}
     	else {
